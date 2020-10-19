@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodshala</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
 <body>
@@ -30,5 +31,15 @@
                     <a class="nav-link" href="<?php echo base_url(); ?>/contact">Contact</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>/register">Register</a>
+                </li>
+            </ul>
         </div>
     </nav>
+    
+    <div class="container">
