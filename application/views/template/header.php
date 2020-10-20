@@ -22,22 +22,31 @@
                     <a class="nav-link" href="<?php echo base_url() ?>">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>/menu">Menu</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>menu">Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>/about">About</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>/contact">Contact</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>contact">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>/register">Register</a>
-                </li>
+                <?php if(! $this->session->has_userdata('is_logged_in')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>register-customer">Register Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>register-restaurant">Register Restaurant</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>logout">Logout</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>

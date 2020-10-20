@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-12 col-sm8 offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 pb-5 bg-white from-wrapper">
         <div class="container">
-            <h3>Register</h3>
+            <h3><?= $title ?></h3>
             <hr>
-            <form class="" action="<?php echo base_url()?>/register" method="post">
+            <form class="" action="<?php echo base_url()?>register-restaurant" method="post">
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
@@ -35,13 +35,14 @@
                             <input type="password" class="form-control" name="password_confirm" id="password_confirm" required>
                         </div>
                     </div>
-                    <!-- <?php if(isset($validation)): ?>
-                        <div class="col-12">
-                            <div class="alert alert-danger">
-                                <?= $validation->listErrors()?>
-                            </div>
-                        </div>
-                    <?php endif; ?> -->
+
+                    <!-- Hidden input for setting the vegen to NA for restaurant -->
+		            <input type="text" hidden value="NA" name="vegen">
+
+                    <!-- Hidden input for setting the role to restaurant -->
+		            <input type="text" hidden value="restaurant" name="role">
+
+                    <!-- Show validation errors if any occur -->
                     <?php if (validation_errors()) : ?>
                         <div class="col-md-12">
                             <div class="alert alert-danger" role="alert">
@@ -64,7 +65,7 @@
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                     <div class="col-12 col-sm-8 text-right">
-                        <a href="<?php echo base_url()?>/login">Already have an account?</a>
+                        <a href="<?php echo base_url()?>login">Already have an account?</a>
                     </div>
                 </div>
             </form>
