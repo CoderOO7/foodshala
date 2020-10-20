@@ -1,6 +1,6 @@
 <?php
 class Users extends CI_Controller {
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model', 'user_model');
@@ -40,7 +40,7 @@ class Users extends CI_Controller {
                 $role = $data->role;
 
                 $sesdata = array(
-                    'firstname'  => $firstname,
+                    'username'  => $firstname,
                     'email'     => $email,
                     'role'     => $role,
                     'is_logged_in' => TRUE
