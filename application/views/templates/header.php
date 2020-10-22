@@ -31,9 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url(); ?>about">About</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url(); ?>contact">Contact</a>
-                </li>
+                </li> -->
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php if(! $this->session->has_userdata('is_logged_in')): ?>
@@ -54,5 +54,3 @@
             </ul>
         </div>
     </nav>
-    
-    <div class="container">

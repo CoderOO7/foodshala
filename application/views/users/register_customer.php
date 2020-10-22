@@ -71,7 +71,7 @@
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                     <div class="col-12 col-sm-8 text-right">
-                        <a href="<?php echo base_url()?>user/login">Already have an account?</a>
+                        <a href="<?php echo site_url()?>login">Already have an account?</a>
                     </div>
                 </div>
             </form>

@@ -1,1 +1,4 @@
-<h2><?= $title ?></h2>
+<!-- TODO -->
+<div class="container">
+    <h2><?= $title ?></h2>
+</div>
