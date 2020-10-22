@@ -7,9 +7,9 @@
             
             $data['title'] = ucfirst($page);
             
-            $this->load->view('template/header');
+            $this->load->view('templates/header');
             $this->load->view('pages/'.$page, $data);
-            $this->load->view('template/footer');
+            $this->load->view('templates/footer');
 
         }
     }

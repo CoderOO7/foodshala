@@ -19,9 +19,9 @@ class Users extends CI_Controller {
         if($this->form_validation->run() === FALSE){
             
             //load the view
-            $this->load->view('template/header');
+            $this->load->view('templates/header');
             $this->load->view('users/login');
-            $this->load->view('template/footer');
+            $this->load->view('templates/footer');
 
         }else{
 
@@ -49,7 +49,7 @@ class Users extends CI_Controller {
 
                 // access login for restaurant members
                 if ($role === 'restaurant') {
-                    redirect('menu');
+                    redirect('menu/view');
                 } else {
                     // access login for customers
                     redirect('home');
@@ -96,16 +96,16 @@ class Users extends CI_Controller {
                 
                 $data['title'] = 'Register As Restaurant';
 
-                $this->load->view('template/header');
+                $this->load->view('templates/header');
                 $this->load->view('users/register_restaurant', $data);
-                $this->load->view('template/footer');
+                $this->load->view('templates/footer');
             } else {
                 
                 $data['title'] = 'Register As Customer';
 
-                $this->load->view('template/header');
+                $this->load->view('templates/header');
                 $this->load->view('users/register_customer', $data);
-                $this->load->view('template/footer');
+                $this->load->view('templates/footer');
             }
         } else {
             
