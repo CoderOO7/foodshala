@@ -9,5 +9,5 @@ A restaurant web app which have following features:
 
 ## How to Use
 1) Make sure you have PHP installed.
-1) Make a new db `foodshala` and import the `foodshala.sql`.
-2) Serve the repo using your favorite server.
+2) Make a new db `foodshala` and import the `foodshala.sql`.
+3) Serve the repo using your favourite server.

@@ -17,7 +17,6 @@ class Users extends CI_Controller {
         }
 
         if($this->form_validation->run() === FALSE){
-            
             //load the view
             $this->load->view('templates/header');
             $this->load->view('users/login');
@@ -28,6 +27,7 @@ class Users extends CI_Controller {
             /**
              * Check for user authorization 
              */
+
 
             $email    = $this->input->post('email', TRUE);
             $password = $this->input->post('password', TRUE);
@@ -55,7 +55,6 @@ class Users extends CI_Controller {
                     redirect('home');
                 }
             } else {
-
                 $this->session->set_flashdata('msg', 'Username or Password is Wrong');
                 redirect('login');
             }
@@ -79,7 +78,6 @@ class Users extends CI_Controller {
     public function register() {
 
         if ($this->input->method() == 'post') {
-            
             //Run form validation check
             $this->form_validation->set_rules('firstname', 'First Name', 'required|min_length[3]|max_length[20]|trim');
             $this->form_validation->set_rules('lastname', 'Last Name', 'required|min_length[3]|max_length[20]|trim');
@@ -90,7 +88,6 @@ class Users extends CI_Controller {
         }
 
         if ($this->form_validation->run() === FALSE) {
-
             //load the view
             if ($this->uri->segment(1) === "register-restaurant") {
                 
@@ -108,7 +105,7 @@ class Users extends CI_Controller {
                 $this->load->view('templates/footer');
             }
         } else {
-            
+        
             /**
              * Store user data in database
              */
