@@ -7,8 +7,9 @@
     <title>Foodshala</title>
 
     <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css"/>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
@@ -38,15 +39,21 @@
             <ul class="navbar-nav ml-auto">
                 <?php if(! $this->session->has_userdata('is_logged_in')): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url(); ?>login">Login</a>
+                        <a class="nav-link" href="<?php echo site_url('login'); ?>">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url(); ?>register-customer">Register Customer</a>
+                        <a class="nav-link" href="<?php echo site_url('register-customer'); ?>">Register Customer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url(); ?>register-restaurant">Register Restaurant</a>
+                        <a class="nav-link" href="<?php echo site_url('register-restaurant'); ?>">Register Restaurant</a>
                     </li>
                 <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link " href="<?php echo site_url('cart/view'); ?>">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-counter">1</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url(); ?>logout">Logout</a>
                     </li>

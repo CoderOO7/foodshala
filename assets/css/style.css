@@ -3,6 +3,7 @@
     --pale-yellow: #CCCC25;
     --chocolate: #3B3734;
     --light-black: #2f2f2f;
+    --light-gray: #4f4f4f;
     --primary :#007BFF;
     --success: #28A745;
     --warning: #FFC107;
@@ -21,95 +22,12 @@ body{
     min-height: 100%;
 }
 
-
-.home,.menu,.about{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.thumb{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
-.home{
-    justify-content: center;
-    align-items: center;
-    font-size: 14vh;
-    font-weight: 900;
-    height: 100vh;
-    color: white;
-}
-
-.menu__card{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,60vmin);
-    grid-auto-rows: min-content;
-    justify-content: center;
-    gap: 8vh;
-    padding: 8vw;
-}
-
-.menu__block{
-    border: 2px solid black;
-}
-
-.menu__header{
-    display: flex;
-    border-bottom: 2px solid black;
-    font-size: 3vh;
-    font-weight: 600;
-}
-.menu__num {
-    flex: 1 1 0;
-    border-right: 2px solid black;
-}
-.menu__title{
-    flex: 9 1 0;
-}
-
-.menu__item-list{
-    font-size: 2.8vh;
-    color: var(--light-black);
-    font-weight: 600;
-}
-
-.menu__item{
-    display: flex;
-    justify-content: space-between;
-}
-
-.menu__item-price {
-    font-style: italic;
-}
-
-.menu__header > *,.menu__item-list > * {
-    padding: 1vw;
-}
-
-.about__intro{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh !important;
-    font-size: 10vh;
-    color: white;
-    font-weight: 900;
-}
-
-.about__pg{
-    padding: 14vh 12vw;
-    text-align: center;
-}
-
-.about-pg-h2{
-    font-size: 6vh;
-    font-weight: 600;
-}
-.about__pg-content{
-    margin-top: 4%;
-    font-size: 3vh;
-    color: #555;
-    line-height: 2;
-    font-size: 18px;
-    margin-bottom: 30px;
+.img-thumbnail{
+    max-height: 40vh;
+    width: max-content;
 }
