@@ -4,6 +4,7 @@
     --chocolate: #3B3734;
     --light-black: #2f2f2f;
     --light-gray: #4f4f4f;
+    --light-white: rgba(255,255,255,.75);
     --primary :#007BFF;
     --success: #28A745;
     --warning: #FFC107;
@@ -30,4 +31,18 @@ body{
 .img-thumbnail{
     max-height: 40vh;
     width: max-content;
+}
+
+.cart-link{
+    position: relative;
+    justify-content: center;
+}
+
+.cart-link .cart-counter{
+    position: absolute;
+    top:0;
+    text-align: center;
+    border-radius: 50%;
+    color: black;
+    background: var(--light-white);
 }

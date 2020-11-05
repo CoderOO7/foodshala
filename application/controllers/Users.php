@@ -28,24 +28,29 @@ class Users extends CI_Controller {
              * Check for user authorization 
              */
 
-
             $email    = $this->input->post('email', TRUE);
             $password = $this->input->post('password', TRUE);
 
             if ($this->user_model->resolve_user_login($email, $password)) {
 
                 $data = $this->user_model->get_user($email);
+                $user_id = $this->user_model->get_user_id_from_email($email);
                 $firstname = $data->firstname;
                 $email = $data->email;
+                $vegen = $data->vegen;
                 $role = $data->role;
-
-                $sesdata = array(
-                    'username'  => $firstname,
-                    'email'     => $email,
-                    'role'     => $role,
-                    'is_logged_in' => TRUE
-                );
-                $this->session->set_userdata($sesdata);
+                
+                if($user_id){
+                    $sesdata = array(
+                        'user_id'   => $user_id,
+                        'username'  => $firstname,
+                        'email'     => $email,
+                        'role'      => $role,
+                        'vegen'     => $vegen,
+                        'is_logged_in' => TRUE
+                    );
+                    $this->session->set_userdata($sesdata);
+                }
 
                 // access login for restaurant members
                 if ($role === 'restaurant') {

@@ -15,20 +15,25 @@
         }
 
         function add_to_cart(){
+            $user_id = $this->session->userdata('user_id');
             $data = array(
-                'id' => $this->input->post('id'), 
+                'id'=> $this->input->post('id'),
                 'name' => $this->input->post('name'), 
                 'price' => $this->input->post('price'), 
                 'qty' => $this->input->post('quantity'), 
             );
-            $this->cart->insert($data);
-            echo $this->show_cart();
+            
+            return $this->cart_model->insert_cart_data($user_id,$data);
+            // echo $this->show_cart();
         }
     
         function show_cart(){
+            $user_id = $this->session->userdata('user_id');
+            $cart_data = $this->cart_model->get_cart_data($user_id);
             $output = '';
             $no = 0;
-            foreach ($this->cart->contents() as $items){
+             
+            foreach ($cart_data as $items){
                 $no++;
                 $output .='
                     <tr>
@@ -44,7 +49,7 @@
             $output .= '
                 <tr>
                     <th colspan="3">Total</th>
-                    <th colspan="2">'.'Rp '.number_format($this->cart->total()).'</th>
+                    <th colspan="2">'.'Rs '.number_format($this->cart->total()).'</th>
                 </tr>
             ';
             /* if($no === 0){

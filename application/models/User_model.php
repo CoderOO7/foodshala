@@ -14,14 +14,14 @@ class User_model extends CI_Model
         return $this->db->insert('users', $userdata);
     }
 
-    /* public function get_user_id_from_email($email) {
+    public function get_user_id_from_email($email) {
 		
 		$this->db->select('id');
 		$this->db->from('users');
 		$this->db->where('email', $email);
 
 		return $this->db->get()->row('id');
-    } */
+    } 
     
 
     public function get_user($email) {

@@ -31,12 +31,13 @@
     
     <script type="text/javascript">
         $(document).ready(function() {
+            let cartCount = 0;
             $('.add_cart').click(function() {
                 <?php if( $this->session->has_userdata('is_logged_in')): ?>
                     let item_id = $(this).data("id");
-                    var item_name = $(this).data("name");
-                    var item_price = $(this).data("price");
-                    var quantity = $('#' + item_id).val();
+                    let item_name = $(this).data("name");
+                    let item_price = $(this).data("price");
+                    let quantity = $('#' + item_id).val();
                     $.ajax({
                         url: "<?php echo site_url('cart/add_to_cart'); ?>",
                         method: "POST",
@@ -47,12 +48,15 @@
                             quantity: quantity
                         },
                         success: function(data) {
+                            const cartCounter = $('.cart-counter');
+                            console.log(data);
+                            cartCounter.text(++cartCount);
                             // alert('Product Added into cart');
                            // $('#detail_cart').html(data);
                         }
                 });
                 <?php else: ?>
-                    window.location ="<?php echo site_url(); ?>login"
+                    window.location ="<?php echo site_url('login'); ?>"
                 <?php endif; ?>
             });
         });
