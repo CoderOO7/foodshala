@@ -23,6 +23,10 @@ body{
     min-height: 100%;
 }
 
+.container,.container-fluid {
+    padding: 2vh;
+}
+
 .thumb{
     margin-top: 15px;
     margin-bottom: 15px;

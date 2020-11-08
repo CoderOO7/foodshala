@@ -1,44 +1,55 @@
 <?php
-class Cart_model extends CI_Model
-{
-    public function __construct()
-    {
+class Cart_model extends CI_Model{
+
+    public function __construct(){
         parent::__construct();
         $this->load->database();
     }
 
-    public function insert_cart_data($user_id,$data){
-       
-        if(isset($user_id) && $this->cart->insert($data)){
-           $cart_data_string = serialize($this->cart->contents());
-           $data = array(
-            'user_id' => $user_id, 
-            'data' => $cart_data_string, 
-           );
+    public function insert_data($user_id){
+        
+        $data = array(
+            'user_id' => $user_id,
+            'food_id' => $this->input->post('food_id'),
+            'qty' => '1'
+        );
 
-           $this->db->where('user_id',$user_id);
-           $query = $this->db->get('cart');
-           if($query->num_rows() > 0){
-               echo 'update';
-                $this->db->where('user_id',$user_id);
-                return $this->db->update('cart',$data);
-           }else{
-               echo 'inset';
-                return $this->db->insert('cart',$data);
-           }
-       }
+        return $this->db->insert('cart',$data);
+
+        /* $this->db->where('user_id',$user_id);
+        $query = $this->db->get('cart');
+        
+        if($query->num_rows() > 0){
+            $this->db->where('user_id',$user_id);
+            return $this->db->update('cart',$data);
+        }else{
+            return $this->db->insert('cart',$data);
+        } */
 
     }
 
-    public function get_cart_data($user_id){    
-        
+    public function get_data($user_id){
+
         if(isset($user_id)){
-            $this->db->select('data');
+            $this->db->order_by('cart.row_id','DESC');
+            $this->db->join('foods','foods.id = cart.food_id');
             $this->db->where('user_id', $user_id);
+            
             $query = $this->db->get('cart');
-            $cart_data_array = unserialize($query->row('data'));
-            return $cart_data_array;
+            return $query->result_array();
         }
 
+    }
+
+    public function delete(){
+        $row_id = $this->input->post('row_id');
+        
+        if(isset($row_id)){
+            $this->db->where('row_id',$row_id);
+            $this->db->delete('cart');
+            return true;
+        }else{
+            echo 'row_id is not valid';
+        }
     }
 }

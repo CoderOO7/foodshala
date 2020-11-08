@@ -50,7 +50,7 @@
                 <?php else: ?>
                     <li class="nav-item">
                         <a class="nav-link cart-link d-inline-flex flex-column align-items-center" href="<?php echo site_url('cart/view'); ?>">
-                            <span class="cart-counter">0</span>
+                            <span class="cart-counter"><?php echo isset($_SESSION['cart_items_count']) == true ? $_SESSION['cart_items_count'] : 0;  ?></span>
                             <i class="fas fa-shopping-cart py-1"></i>
                         </a>
                     </li>
