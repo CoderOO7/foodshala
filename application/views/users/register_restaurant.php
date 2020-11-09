@@ -38,10 +38,10 @@
                         </div>
     
                         <!-- Hidden input for setting the vegen to NA for restaurant -->
-    		            <input type="text" hidden value="NA" name="vegen">
+    		            <input type="hidden" value="NA" name="vegen">
     
                         <!-- Hidden input for setting the role to restaurant -->
-    		            <input type="text" hidden value="restaurant" name="role">
+    		            <input type="hidden" value="restaurant" name="role">
     
                         <!-- Show validation errors if any occur -->
                         <?php if (validation_errors()) : ?>

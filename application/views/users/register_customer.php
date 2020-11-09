@@ -46,7 +46,7 @@
                     </div>
 
                     <!-- Hidden input for setting the role to customer -->
-		            <input type="text" hidden value="customer" name="role">
+		            <input type="hidden" value="customer" name="role">
                     
                     <!-- Show validation errors if any occur -->
                     <?php if (validation_errors()) : ?>

@@ -37,7 +37,7 @@
                 </li> -->
             </ul>
             <ul class="navbar-nav ml-auto">
-                <?php if(! $this->session->has_userdata('is_logged_in')): ?>
+                <?php if(! $_SESSION['is_logged_in']): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url('login'); ?>">Login</a>
                     </li>
@@ -48,12 +48,15 @@
                         <a class="nav-link" href="<?php echo site_url('register-restaurant'); ?>">Register Restaurant</a>
                     </li>
                 <?php else: ?>
-                    <li class="nav-item">
-                        <a class="nav-link cart-link d-inline-flex flex-column align-items-center" href="<?php echo site_url('cart/view'); ?>">
-                            <span class="cart-counter"><?php echo isset($_SESSION['cart_items_count']) == true ? $_SESSION['cart_items_count'] : 0;  ?></span>
-                            <i class="fas fa-shopping-cart py-1"></i>
-                        </a>
-                    </li>
+                    <!-- validation that visible the cart for logged in customers -->
+                    <?php if ($_SESSION['is_logged_in'] AND $_SESSION['role'] === "customer") : ?>
+                        <li class="nav-item">
+                            <a class="nav-link cart-link d-inline-flex flex-column align-items-center" href="<?php echo site_url('cart/view'); ?>">
+                                <span class="cart-counter"><?php echo isset($_SESSION['cart_items_count']) == true ? $_SESSION['cart_items_count'] : 0;  ?></span>
+                                <i class="fas fa-shopping-cart py-1"></i>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url('logout'); ?>">Logout</a>
                     </li>

@@ -51,14 +51,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['cart/view'] = 'cart/view';
 $route['orders'] = 'orders/index';
+
 $route['menu/load-cart'] = 'menu_items/load_cart';
 $route['menu/add-to-cart'] = 'menu_items/add_to_cart';
+$route['menu/delete/(:any)'] = 'menu_items/delete_item/$1';
+$route['menu/edit/(:any)'] = 'menu_items/edit_item/$1';
+$route['menu/add'] = 'menu_items/add_item';
 $route['menu/view'] = 'menu_items/index';
+
 $route['register-customer'] = 'users/register';
 $route['register-restaurant'] = 'users/register';
 $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
+
 $route['default_controller'] = 'pages/view';
+
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

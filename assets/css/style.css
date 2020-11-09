@@ -27,14 +27,18 @@ body{
     padding: 2vh;
 }
 
-.thumb{
+.menu-item{
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.img-thumbnail{
-    max-height: 40vh;
-    width: max-content;
+.menu-item-thumb{
+    height: 30vh;
+    width: 100%;
+}
+
+.menu-item-btn{
+    width: 44%;
 }
 
 .cart-link{

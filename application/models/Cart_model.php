@@ -33,7 +33,7 @@ class Cart_model extends CI_Model{
         if(isset($user_id)){
             $this->db->order_by('cart.row_id','DESC');
             $this->db->join('foods','foods.id = cart.food_id');
-            $this->db->where('user_id', $user_id);
+            $this->db->where('cart.user_id', $user_id);
             
             $query = $this->db->get('cart');
             return $query->result_array();

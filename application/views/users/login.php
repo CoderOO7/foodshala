@@ -3,6 +3,8 @@
         <div class="container">
             <h3>Login</h3>
             <hr>
+            <?php echo validation_errors()?>
+            
             <form class="" action="<?php echo site_url()?>login" method="post">
                 <div class="form-group">
                     <label for="email">Email address</label>
