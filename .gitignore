@@ -30,3 +30,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 ## Visual-Studio files
 .vscode 
+
+
+## assets
+/assets/images/foods/
