@@ -4,6 +4,7 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model', 'user_model');
+        $this->load->model('Cart_model', 'cart_model');
     }
 
     public function login() {
@@ -35,7 +36,9 @@ class Users extends CI_Controller {
 
                 $data = $this->user_model->get_user($email);
                 $user_id = $this->user_model->get_user_id_from_email($email);
+                $cart_count = $this->cart_model->get_items_count();
                 $firstname = $data->firstname;
+                $lastname = $data->lastname;
                 $email = $data->email;
                 $vegen = $data->vegen;
                 $role = $data->role;
@@ -43,11 +46,13 @@ class Users extends CI_Controller {
                 if($user_id){
                     $sesdata = array(
                         'user_id'   => $user_id,
-                        'username'  => $firstname,
+                        'first_name'  => $firstname,
+                        'last_name'  => $lastname,
                         'email'     => $email,
                         'role'      => $role,
                         'vegen'     => $vegen,
-                        'is_logged_in' => TRUE
+                        'is_logged_in' => TRUE,
+                        'cart_contents' => array('total_items' => $cart_count),
                     );
                     $this->session->set_userdata($sesdata);
                 }

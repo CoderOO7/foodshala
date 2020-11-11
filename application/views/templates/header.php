@@ -49,10 +49,10 @@
                     </li>
                 <?php else: ?>
                     <!-- validation that visible the cart for logged in customers -->
-                    <?php if ($_SESSION['is_logged_in'] AND $_SESSION['role'] === "customer") : ?>
+                    <?php if ($_SESSION['is_logged_in'] && $_SESSION['role'] === "customer") : ?>
                         <li class="nav-item">
                             <a class="nav-link cart-link d-inline-flex flex-column align-items-center" href="<?php echo site_url('cart/view'); ?>">
-                                <span class="cart-counter"><?php echo isset($_SESSION['cart_items_count']) == true ? $_SESSION['cart_items_count'] : 0;  ?></span>
+                                <span class="cart-counter"><?php echo isset($_SESSION['cart_contents']['total_items']) == true ? $_SESSION['cart_contents']['total_items'] : 0;  ?></span>
                                 <i class="fas fa-shopping-cart py-1"></i>
                             </a>
                         </li>

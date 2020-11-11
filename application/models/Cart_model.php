@@ -15,17 +15,6 @@ class Cart_model extends CI_Model{
         );
 
         return $this->db->insert('cart',$data);
-
-        /* $this->db->where('user_id',$user_id);
-        $query = $this->db->get('cart');
-        
-        if($query->num_rows() > 0){
-            $this->db->where('user_id',$user_id);
-            return $this->db->update('cart',$data);
-        }else{
-            return $this->db->insert('cart',$data);
-        } */
-
     }
 
     public function get_data($user_id){
@@ -51,5 +40,13 @@ class Cart_model extends CI_Model{
         }else{
             echo 'row_id is not valid';
         }
+    }
+
+    public function get_items_count(){
+        return $this->db->from('cart')->count_all_results();
+    }
+
+    public function destroy(){
+        return $this->db->truncate('cart');
     }
 }

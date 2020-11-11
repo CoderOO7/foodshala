@@ -21,7 +21,7 @@
         
         $(document).on('click', '.romove_cart', function() {
             let rowId = $(this).attr("id");
-            let cartCount = <?php echo $_SESSION['cart_items_count'];?>;
+            let cartCount = <?= $_SESSION['cart_contents']['total_items'];?>;
             $.ajax({
                 url: "<?php echo site_url('cart/delete_cart_item'); ?>",
                 method: "POST",

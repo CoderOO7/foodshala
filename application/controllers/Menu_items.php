@@ -64,7 +64,7 @@ class Menu_items extends CI_Controller{
             if($this->menu_item_model->update_item($param)){
                 redirect('menu/view');
             }else{
-                echo 'Error while updating the item in db';
+                print_r('Error while updating the item in db');
             };
         }
     }
@@ -88,7 +88,7 @@ class Menu_items extends CI_Controller{
             if(!$this->upload->do_upload($img_key)){ //If image not uploaded
                 $errors = array('error' => $this->upload->display_errors());
                 foreach($errors as $error){
-                    echo $error;
+                    log_message('error','image upload error: '.$error);
                 }
                 $img_name = 'noimage.jpg';
             }else{ //Image uploaded successfully

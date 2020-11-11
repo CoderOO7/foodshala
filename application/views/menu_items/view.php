@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between">
         <h2>Food Items</h2>
-        <?php if ($_SESSION['is_logged_in'] AND $_SESSION['role'] === "restaurant"):?>
+        <?php if ($_SESSION['is_logged_in'] && $_SESSION['role'] === "restaurant"):?>
             <a href="<?php echo site_url('menu/add')?>" class="btn btn-primary">Add Items</a>
         <?php endif; ?>
     </div>
@@ -28,7 +28,7 @@
                                     <hr/>
                                     <div class="d-flex justify-content-between">
                                         <!-- validation to allow only customers to order the item -->
-                                        <?php if ($_SESSION['is_logged_in'] AND $_SESSION['role'] === "restaurant") : ?>
+                                        <?php if ($_SESSION['is_logged_in'] && $_SESSION['role'] === "restaurant") : ?>
                                             <a class="menu-item-btn btn btn-success" href="<?php echo site_url('menu/edit/'.$row->id); ?>">Edit</a> 
                                             <a class="menu-item-btn btn btn-dark" href="<?php echo site_url('menu/delete/'.$row->id); ?>">Delete</a> 
                                         <?php else: ?>
