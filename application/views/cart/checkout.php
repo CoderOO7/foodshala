@@ -36,7 +36,7 @@
             <div class="mb-3">
                 <div class="form-group">
                     <label for="address_e">Alternate Address</label>
-                    <input type="text" class="form-control" id="address_e" name="address_e" value="<?= set_value('address_e') ?>" placeholder="1234 Main Street" required>
+                    <input type="text" class="form-control" id="address_e" name="address_e" value="<?= set_value('address_e') ?>" placeholder="XYZ Loaction" required>
                 </div>
             </div>
 

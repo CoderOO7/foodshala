@@ -8,8 +8,8 @@ class Menu_item_model extends CI_Model{
    
     public function get_all_items(){
         $this->db->order_by('id','DESC');
-        $result = $this->db->get('foods');
-        return $result;
+        $query = $this->db->get('foods');
+        return $query->result();
     }
 
     public function get_item_by_id($food_id){
@@ -24,7 +24,7 @@ class Menu_item_model extends CI_Model{
             'price' => $this->input->post('price'),
             'stock' => $this->input->post('quantity'),
             'image' => $food_image,
-            'user_id' => $user_id
+            'restaurant_id' => $user_id
         );
         return $this->db->insert('foods',$data);
     }
@@ -35,7 +35,7 @@ class Menu_item_model extends CI_Model{
             'price' => $this->input->post('price'),
             'stock' => $this->input->post('quantity'),
             'image' => $param['img_name'],
-            'user_id' => $param['user_id'],
+            'restaurant_id' => $param['user_id'],
         );
         $this->db->where('id',$param['food_id']);
         return $this->db->update('foods',$data);
@@ -49,5 +49,19 @@ class Menu_item_model extends CI_Model{
         }
     }
 
+    public function get_restaurant_id($food_id){
+        if(isset($food)){
+            $this->db->select('restaurant_id');
+            return $this->db->get_where('foods',array('food_id' => $food_id));
+        }
+    }
+
+    public function get_restaurant_name($food_id){
+        if(isset($food_id)){
+            $this->db->select('firstname, lastname');
+            $this->db->join('users','users.id = foods.restaurant_id');
+            return $this->db->get_where('foods',array('foods.id' => $food_id))->row_array();
+        }
+    }
 
 }

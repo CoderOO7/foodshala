@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $rotue['cart/checkout'] = 'cart/checkout';
 $route['cart/view'] = 'cart/view';
 
+$route['orders/history/(:any)'] = 'orders/orders_history/$1';
 $route['orders'] = 'orders/index';
 
 $route['menu/load-cart'] = 'menu_items/load_cart';

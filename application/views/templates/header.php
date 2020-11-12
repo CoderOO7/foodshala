@@ -56,6 +56,13 @@
                                 <i class="fas fa-shopping-cart py-1"></i>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo site_url('orders/history/'.$_SESSION['user_id']); ?>">My Orders</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo site_url('orders'); ?>">Orders</a>
+                        </li>
                     <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url('logout'); ?>">Logout</a>

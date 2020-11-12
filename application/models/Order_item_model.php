@@ -12,8 +12,9 @@
             $data = array(
                 'order_id' => $order_id,
                 'food_id' => $item['id'],
+                'restaurant_id' => $item['restaurant_id'],
                 'price' => $item['price'],
-                'quantity' => $item['qty']
+                'quantity' => $item['qty'],
             );
 
             return $this->db->insert('order_items',$data);

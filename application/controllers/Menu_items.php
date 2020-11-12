@@ -7,8 +7,9 @@ class Menu_items extends CI_Controller{
     }
 
     function index(){
-        $data['data']=$this->menu_item_model->get_all_items();
-        
+        $data['items'] = $this->menu_item_model->get_all_items();
+        $data['rnames'] = $this->_get_restaurant_names($data['items']);
+
         $this->load->view('templates/header');
         $this->load->view('menu_items/view', $data);
         $this->load->view('templates/footer');
@@ -97,5 +98,18 @@ class Menu_items extends CI_Controller{
             }
         }
         return $img_name;
+    }
+
+    function _get_restaurant_names($items = array()){
+        if(! is_array($items) || count($items) == 0){
+            log_message('error', 'The passed parameter must be passed an array containing data');
+            return NULL;
+        }
+        $rnames = [];
+        foreach($items as $item){
+            $name = $this->menu_item_model->get_restaurant_name($item->id);
+            array_push($rnames,$name);
+        }
+        return $rnames;
     }
 }
