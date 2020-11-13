@@ -83,7 +83,8 @@ class Cart extends CI_Controller
     {
         if($this->cart_model->delete()){
             $count = $_SESSION['cart_contents']['total_items'];
-            $_SESSION['cart_contents']['total_items'] = --$count; 
+            $_SESSION['cart_contents']['total_items'] = --$count;
+            
             return $this->load_cart();
         }else{
             print_r("Error while deleting the cart item from db");
@@ -156,7 +157,7 @@ class Cart extends CI_Controller
 
         $total = 0;
         foreach($items as $item){
-            $total += number_format($item['price']) * number_format($item['qty']);
+            $total += $item['price'] * $item['qty'];
         }
         print_r($total);
         return $total;

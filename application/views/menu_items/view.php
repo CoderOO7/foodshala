@@ -50,12 +50,12 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            let cartCount = <?php echo isset($_SESSION['cart_items_count']) ? $_SESSION['cart_items_count'] : 0; ?>;
+            let cartCount = <?php echo isset($_SESSION['cart_contents']['total_items']) ? $_SESSION['cart_contents']['total_items'] : 0; ?>;
             $('.add-cart').click(function(event) {
                 let target = $(this);
                 <?php if ($_SESSION['is_logged_in']) : ?>
                     let item_id = $(this).data("id");
-                    let quantity = $('#' + item_id).val();
+                    console.log(item_id);
                     $.ajax({
                         url: "<?php echo site_url('cart/add_to_cart'); ?>",
                         method: "POST",

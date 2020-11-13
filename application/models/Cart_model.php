@@ -9,7 +9,7 @@ class Cart_model extends CI_Model{
     public function insert_data($user_id){
         
         $data = array(
-            'user_id' => $user_id,
+            'customer_id' => $user_id,
             'food_id' => $this->input->post('food_id'),
             'qty' => '1'
         );
@@ -22,7 +22,7 @@ class Cart_model extends CI_Model{
         if(isset($user_id)){
             $this->db->order_by('cart.row_id','DESC');
             $this->db->join('foods','foods.id = cart.food_id');
-            $this->db->where('cart.user_id', $user_id);
+            $this->db->where('cart.customer_id', $user_id);
             
             $query = $this->db->get('cart');
             return $query->result_array();
