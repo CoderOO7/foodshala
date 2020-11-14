@@ -78,7 +78,7 @@ $remotedb_username = getenv('DB_USERNAME');
 $remotedb_pswd = getenv('DB_PASSWORD');
 $remotedb_database = getenv('DB_NAME');
 $remotedb_driver = getenv('DB_DRIVER');
-$remotedb_port = getcwd('DB_PORT');
+$remotedb_port = getenv('DB_PORT');
 
 $db['default'] = array(
 	'dsn'	=> '',
