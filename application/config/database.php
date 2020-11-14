@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'foodshala',
+	'hostname' => 'freedb.tech',
+	'username' => 'freedbtech_web',
+	'password' => 'root1234',
+	'database' => 'freedbtech_foodshala',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
