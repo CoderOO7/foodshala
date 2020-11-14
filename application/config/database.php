@@ -73,20 +73,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$remotedb_hostname = getenv('');
-$remotedb_username = getenv('');
-$remotedb_pswd = getenv('');
-$remotedb_database = getenv('');
-$remotedb_driver = getenv('');
-
+$remotedb_hostname = getenv('DB_HOST');
+$remotedb_username = getenv('DB_USERNAME');
+$remotedb_pswd = getenv('DB_PASSWORD');
+$remotedb_database = getenv('DB_NAME');
+$remotedb_driver = getenv('DB_DRIVER');
+$remotedb_port = getcwd('DB_PORT');
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'freedb.tech',
-	'username' => 'freedbtech_web',
-	'password' => 'root1234',
-	'database' => 'freedbtech_foodshala',
-	'dbdriver' => 'mysqli',
+	'hostname' => $remotedb_hostname,
+	'username' => $remotedb_username,
+	'password' => $remotedb_pswd,
+	'database' => $remotedb_database,
+	'dbdriver' => $remotedb_driver,
+	'port' => $remotedb_port,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
