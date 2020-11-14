@@ -73,6 +73,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$remotedb_hostname = getenv('');
+$remotedb_username = getenv('');
+$remotedb_pswd = getenv('');
+$remotedb_database = getenv('');
+$remotedb_driver = getenv('');
+
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'freedb.tech',
