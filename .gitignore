@@ -33,4 +33,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 
 ## assets
-/assets/images/foods/
+/assets/images/foods/*
