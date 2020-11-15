@@ -30,7 +30,7 @@
             $this->db->order_by('orders.id','DESC');
             $this->db->join('order_items','orders.id = order_id');
             $this->db->join('foods','foods.id = order_items.food_id');
-            $query = $this->db->get_where('orders',array('customer_id',$user_id));
+            $query = $this->db->get_where('orders',array('customer_id' => $user_id));
             return $query->result_array();
         }
 
