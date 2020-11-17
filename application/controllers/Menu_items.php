@@ -1,4 +1,9 @@
 <?php
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+use Google\Cloud\Storage\StorageClient;
+
 class Menu_items extends CI_Controller{
     
     function __construct(){
@@ -79,25 +84,48 @@ class Menu_items extends CI_Controller{
 
         $img_name = NULL;
         if($_FILES[$img_key]['name'] != ""){
-
-            $config['upload_path'] = './assets/images/foods/';
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
-            $config['max_size'] = '4096';
-    
-            $this->load->library('upload',$config);
             
-            if(!$this->upload->do_upload($img_key)){ //If image not uploaded
-                $errors = array('error' => $this->upload->display_errors());
-                foreach($errors as $error){
-                    log_message('error','image upload error: '.$error);
-                }
-                $img_name = 'noimage.jpg';
-            }else{ //Image uploaded successfully
-                $data = array('upload_data' => $this->upload->data());
-                $img_name = $_FILES[$img_key]['name'];
+            $this->config->load('credentials', TRUE);
+            $gc_crendentials = $this->config->item('gc_credentials', 'credentials');
+            
+            $privateKeyFileContent = $gc_crendentials['auth'];
+            $bucketName = $gc_crendentials['storage']['bucket'];
+            // get local file for upload testing
+            $fileContent = file_get_contents($_FILES[$img_key]["tmp_name"]);
+            // NOTE: if 'folder' or 'tree' is not exist then it will be automatically created !
+            $cloudPath = 'images/' . $_FILES[$img_key]["name"];
+     
+            $isSucceed = $this->do_upload($bucketName, $fileContent, $cloudPath, $privateKeyFileContent);
+
+            if($isSucceed ===  true){
+                $img_name = $_FILES[$img_key]["name"];
             }
+
         }
         return $img_name;
+    }
+
+    function do_upload($bucketName, $fileContent, $cloudPath,$privateKeyFileContent){
+
+        // connect to Google Cloud Storage using private key as authentication
+        try {
+            $storage = new StorageClient([
+                'keyFile' => $privateKeyFileContent
+            ]);
+        } catch (Exception $e) {
+            // maybe invalid private key ?
+            print $e;
+            return false;
+        }
+
+        // set which bucket to work in
+        $bucket = $storage->bucket($bucketName);
+
+        // upload/replace file 
+        $storageObject = $bucket->upload($fileContent,['name' => $cloudPath]);
+
+        // is it succeed ?
+        return $storageObject != null;
     }
 
     function _get_restaurant_names($items = array()){
