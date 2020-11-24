@@ -12,6 +12,10 @@ class Menu_items extends CI_Controller{
     }
 
     function index(){
+        $this->config->load('credentials', TRUE);
+        $gc_crendentials = $this->config->item('gc_credentials', 'credentials');
+        
+        $data['bucket_name'] = $gc_crendentials['storage']['bucket'];
         $data['items'] = $this->menu_item_model->get_all_items();
         $data['rnames'] = $this->_get_restaurant_names($data['items']);
 

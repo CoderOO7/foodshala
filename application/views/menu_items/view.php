@@ -13,7 +13,7 @@
                     <?php foreach ($items as $key => $item) : ?>
                         <div class="col-lg-3 col-md-2 col-sm-6 menu-item">
                             <div class="thumbnail">
-                                <img class="menu-item-thumb" src="<?php echo base_url( 'assets/images/foods/'.$item->image ); ?>"
+                                <img class="menu-item-thumb" src="https://storage.googleapis.com/<?= $bucket_name ?>/images/<?= $item->image ?>"
                                     onerror="this.onerror=null; this.src='<?php echo base_url('assets/images/noimage.jpg') ;?>'"/>
                                 <div class="caption">
                                     <h4 class="font-weight-bold"><?php echo $item->name; ?></h4>
