@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -73,6 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "";
+
 $remotedb_hostname = getenv('DB_HOST');
 $remotedb_username = getenv('DB_USERNAME');
 $remotedb_pswd = getenv('DB_PASSWORD');
@@ -80,47 +82,51 @@ $remotedb_database = getenv('DB_NAME');
 $remotedb_driver = getenv('DB_DRIVER');
 $remotedb_port = getenv('DB_PORT');
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => $remotedb_hostname,
-	'username' => $remotedb_username,
-	'password' => $remotedb_pswd,
-	'database' => $remotedb_database,
-	'dbdriver' => $remotedb_driver,
-	'port' => $remotedb_port,
-	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+if (stristr($host, "localhost") !== FALSE || (stristr($host, '192.168.') !== FALSE) || (stristr($host, '127.0.0') !== FALSE)) {
 
-/* $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'foodshala',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-); */
+	$db['default'] = array(
+		'dsn'	=> '',
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => '',
+		'database' => 'foodshala',
+		'dbdriver' => 'mysqli',
+		'dbprefix' => '',
+		'pconnect' => TRUE,
+		'db_debug' => (ENVIRONMENT !== 'production'),
+		'cache_on' => FALSE,
+		'cachedir' => '',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+		'swap_pre' => '',
+		'encrypt' => FALSE,
+		'compress' => FALSE,
+		'stricton' => FALSE,
+		'failover' => array(),
+		'save_queries' => TRUE
+	);
+} else {
+	
+	$db['default'] = array(
+		'dsn'	=> '',
+		'hostname' => $remotedb_hostname,
+		'username' => $remotedb_username,
+		'password' => $remotedb_pswd,
+		'database' => $remotedb_database,
+		'dbdriver' => $remotedb_driver,
+		'port' => $remotedb_port,
+		'dbprefix' => '',
+		'pconnect' => TRUE,
+		'db_debug' => (ENVIRONMENT !== 'production'),
+		'cache_on' => FALSE,
+		'cachedir' => '',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+		'swap_pre' => '',
+		'encrypt' => FALSE,
+		'compress' => FALSE,
+		'stricton' => FALSE,
+		'failover' => array(),
+		'save_queries' => TRUE
+	);
+}

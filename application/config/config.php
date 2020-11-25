@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$protocol = is_https() ? "https://" : "http://";
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "";
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,8 +25,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://foodshaalaa.herokuapp.com/';
-// $config['base_url'] = 'https://localhost/foodshala/';
+if(is_cli()){
+   $config['base_url'] = '';
+}
+else if(stristr($host, "localhost") !== FALSE || (stristr($host, '192.168.') !== FALSE) || (stristr($host, '127.0.0') !== FALSE)){
+   $config['base_url'] = $protocol.$host."/foodshala/";
+}
+else{
+    $allowed_hosts = ['foodshaalaa.herokuapp.com'];
+    $config['base_url'] = in_array($host, $allowed_hosts) ? $protocol.$host."/" : "we-do-not-recognise-this-host.com";
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -381,8 +391,11 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = BASEPATH.'sessions';
-// $config['sess_save_path'] = NULL;
+if(stristr($host, "localhost") !== FALSE || (stristr($host, '192.168.') !== FALSE) || (stristr($host, '127.0.0') !== FALSE)){
+    $config['sess_save_path'] = NULL;
+}else{
+    $config['sess_save_path'] = BASEPATH.'sessions';
+}
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;

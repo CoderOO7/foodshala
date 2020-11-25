@@ -37,8 +37,8 @@
                             </div>
                         </div>
     
-                        <!-- Hidden input for setting the vegen to NA for restaurant -->
-    		            <input type="hidden" value="NA" name="vegen">
+                        <!-- Hidden input for setting the vegen to 0 for restaurant -->
+    		            <input type="hidden" value="0" name="vegen">
     
                         <!-- Hidden input for setting the role to restaurant -->
     		            <input type="hidden" value="restaurant" name="role">
