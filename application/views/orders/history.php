@@ -19,7 +19,7 @@
                     <?php foreach($orders as $item): ?>
                         <tr>
                             <td><?= $item['order_id']; ?></td>
-                            <td><img class="order-item-img" src="<?= site_url('assets/images/foods/'.$item['image']) ?>" 
+                            <td><img class="order-item-img" src="https://storage.googleapis.com/<?= $bucket_name ?>/images/<?= $item['image'] ?>" 
                                 onerror="this.onerror=null; this.src='<?= base_url('assets/images/noimage.jpg')?>'" alt=""></td>
                             <td><?= $item['name']; ?></td>
                             <td><?= $item['quantity']; ?></td>
