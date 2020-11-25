@@ -20,7 +20,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 d-flex justify-content-between">
                                             <h5>Rs. <?php echo number_format($item->price); ?></h5>
-                                            <em class="font-weight-bold">By <?= $rnames[$key]['firstname'].' '.$rnames[$key]['lastname']; ?></em>
+                                            <em class="font-weight-bold">By <?= ucfirst($rnames[$key]['firstname']).' '.ucfirst($rnames[$key]['lastname']); ?></em>
                                         </div>
                                         <!-- <div class="col-lg-7">
                                             <input type="hidden" name="quantity" id="<?php echo $item->id; ?>" value="1" class="quantity form-control">
